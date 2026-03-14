@@ -1,0 +1,4 @@
+{
+  "turnSxOff": "<img class=\"w-100\"  src=\"icons/turn/turnSignalSxOff.svg\">",
+  "turnSx": "<img class=\"w-100 neon-verde\"  src=\"icons/turn/turnSignalSx.svg\">"
+}

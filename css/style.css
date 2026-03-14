@@ -1,0 +1,25 @@
+.rotate-90 {
+    transform: rotate(-90deg);
+    display: block;
+}
+
+.rotate-270 {
+     transform: rotate(90deg);
+     display: block;
+ }
+
+.neon-bianco {
+    filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 10px #ffffff) brightness(1.2);
+}
+
+.neon-rosso {
+    filter: drop-shadow(0 0 2px #ff0000) drop-shadow(0 0 10px #ff0000) brightness(1.2);
+}
+
+.neon-verde {
+    filter: drop-shadow(0 0 2px #00ff00) drop-shadow(0 0 10px #00ff00) brightness(1.2);
+}
+
+.neon-azzurro {
+    filter: drop-shadow(0 0 2px #0000ff) drop-shadow(0 0 10px #0000ff) brightness(1.2);
+}
