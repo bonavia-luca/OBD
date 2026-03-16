@@ -12,6 +12,10 @@
     filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 10px #ffffff) brightness(1.2);
 }
 
+/*.neon-arancione {
+    filter: drop-shadow(0 0 2px #ffa500) drop-shadow(0 0 10px #ffa500) brightness(1.2);
+}*/
+
 .neon-rosso {
     filter: drop-shadow(0 0 2px #ff0000) drop-shadow(0 0 10px #ff0000) brightness(1.2);
 }

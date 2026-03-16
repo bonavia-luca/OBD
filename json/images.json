@@ -1,4 +1,34 @@
 {
-  "turnSxOff": "<img class=\"w-100\"  src=\"icons/turn/turnSignalSxOff.svg\">",
-  "turnSx": "<img class=\"w-100 neon-verde\"  src=\"icons/turn/turnSignalSx.svg\">"
+  "turnSignals": {
+    "turnSxOff": "<img class=\"w-100\"  src=\"icons/turn/turnSignalSxOff.svg\">",
+    "turnSx": "<img class=\"w-100 neon-verde\"  src=\"icons/turn/turnSignalSx.svg\">",
+    "turnDxOff": "<img class=\"w-100\"  src=\"icons/turn/turnSignalDxOff.svg\">",
+    "turnDx": "<img class=\"w-100 neon-verde\"  src=\"icons/turn/turnSignalDx.svg\">",
+    "hazardOff": "<img class=\"w-100\"  src=\"icons/turn/hazardOff.svg\">",
+    "hazard": "<img class=\"w-100 neon-rosso\"  src=\"icons/turn/hazard.svg\">"
+  },
+  "lights" : {
+    "fogLight": "<img class=\"w-50 neon-verde\"  src=\"icons/lights/fogLight.svg\">",
+    "highLight": "<img class=\"w-50 neon-azzurro\"  src=\"icons/lights/highLight.svg\">",
+    "lowLight": "<img class=\"w-50 neon-verde\"  src=\"icons/lights/lowLight.svg\">",
+    "noLight": "<img class=\"w-50 neon-rosso\"  src=\"icons/lights/noLight.svg\">",
+    "lamp": "<img class=\"w-50 neon-rosso\"  src=\"icons/lights/lamp.svg\">"
+  },
+  "otherWarnings" : {
+    "battery": "<img class=\"w-100 neon-rosso\"  src=\"icons/battery.svg\">",
+    "brakeSystem": "<img class=\"w-100 neon-rosso\"  src=\"icons/brakeSystem.svg\">",
+    "candelette": "<img class=\"w-100 neon-rosso\"  src=\"icons/candelette.svg\">",
+    "doors": "<img class=\"w-100 neon-rosso\"  src=\"icons/doors.svg\">",
+    "highTemperature": "<img class=\"w-100 neon-rosso\"  src=\"icons/highTemperature.svg\">",
+    "engineOil": "<img class=\"w-100 neon-rosso\"  src=\"icons/engineOil.svg\">",
+    "fuel": "<img class=\"w-100\"  src=\"icons/fuel.svg\">",
+    "hood": "<img class=\"w-100 neon-rosso\"  src=\"icons/hood.svg\">",
+    "injectors": "<img class=\"w-100 neon-rosso\"  src=\"icons/injectors.svg\">",
+    "motor": "<img class=\"w-100 neon-rosso\"  src=\"icons/motor.png\">",
+    "outOfFuel": "<img class=\"w-100 neon-rosso\"  src=\"icons/outOfFuel.svg\">",
+    "rearDefrost": "<img class=\"w-100 neon-azzurro\"  src=\"icons/rearDefrost.svg\">",
+    "temperature": "<img class=\"w-100\"  src=\"icons/temperature.svg\">",
+    "trunk": "<img class=\"w-100 neon-rosso\"  src=\"icons/trunk.svg\">",
+    "warning": "<img class=\"w-100 neon-rosso\"  src=\"icons/warning.svg\">"
+  }
 }
