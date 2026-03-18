@@ -8,7 +8,7 @@ export default class TurnSignal {
 
     async caricaTurnSignals() {
         this.turn = await Images.getTurnSignals();
-        //this.lampeggiaHazard()
+        this.lampeggiaHazard()
     }
 
     //SE CORRENTE CONTINUA, ALTRIMENTI GESTISCO ATTRAVERSO LETTURA SPIA

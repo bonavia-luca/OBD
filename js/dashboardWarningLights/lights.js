@@ -4,14 +4,15 @@ export default class Lights {
     constructor() {
         this.lights = null;
         this.divLights = document.getElementById("lights");
-        this.divOtherLights = document.getElementById("otherLights");
         this.caricaLights();
     }
 
     async caricaLights() {
         this.lights = await Images.getLights();
-        this.noLight();
+        this.highLight()
+        // this.noLight();
         this.lamp();
+        this.fogLight();
     }
 
     highLight() {
@@ -19,7 +20,7 @@ export default class Lights {
     }
 
     lamp() {
-        this.divOtherLights.innerHTML = this.lights.lamp;
+        document.getElementById("errorLights").innerHTML = this.lights.lamp;
     }
 
     lowLight() {
@@ -31,6 +32,6 @@ export default class Lights {
     }
 
     fogLight() {
-        this.divOtherLights.innerHTML = this.lights.fogLight;
+        document.getElementById("fogLights").innerHTML = this.lights.fogLight;
     }
 }

@@ -23,6 +23,11 @@ export default class OtherWarnings {
         this.injectors()
         this.motor()
         this.candelette()
+        this.doors()
+        this.hood()
+        this.rearDefrost()
+        this.trunk()
+        this.warning()
     }
 
     fuel() {
@@ -87,5 +92,39 @@ export default class OtherWarnings {
             </div>`;
     }
 
+    doors() {
+        this.divOtherWarnings.innerHTML += `
+            <div class="col-1 d-flex align-items-center">
+                ${this.otherWarnings.doors}
+            </div>`;
+    }
+
+    hood() {
+        this.divOtherWarnings.innerHTML += `
+            <div class="col-1 d-flex align-items-center">
+                ${this.otherWarnings.hood}
+            </div>`;
+    }
+
+    rearDefrost() {
+        this.divOtherWarnings.innerHTML += `
+            <div class="col-1 d-flex align-items-center">
+                ${this.otherWarnings.rearDefrost}
+            </div>`;
+    }
+
+    trunk() {
+        this.divOtherWarnings.innerHTML += `
+            <div class="col-1 d-flex align-items-center">
+                ${this.otherWarnings.trunk}
+            </div>`;
+    }
+
+    warning() {
+        this.divOtherWarnings.innerHTML += `
+            <div class="col-1 d-flex align-items-center">
+                ${this.otherWarnings.warning}
+            </div>`;
+    }
     //TODO: spie rimanenti
 }

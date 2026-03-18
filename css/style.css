@@ -1,4 +1,12 @@
-.rotate-90 {
+html, body {
+    /*margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;*/
+    overflow: hidden;
+}
+
+/*.rotate-90 {
     transform: rotate(-90deg);
     display: block;
 }
@@ -6,7 +14,7 @@
 .rotate-270 {
      transform: rotate(90deg);
      display: block;
- }
+ }*/
 
 .neon-bianco {
     filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 10px #ffffff) brightness(1.2);
