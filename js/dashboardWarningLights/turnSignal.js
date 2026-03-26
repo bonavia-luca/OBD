@@ -1,4 +1,4 @@
-import Images from "./images.js";
+import Images from "../images.js";
 
 export default class TurnSignal {
     constructor() {
@@ -8,7 +8,7 @@ export default class TurnSignal {
 
     async caricaTurnSignals() {
         this.turn = await Images.getTurnSignals();
-        this.lampeggiaHazard()
+        //this.lampeggiaHazard()
     }
 
     //SE CORRENTE CONTINUA, ALTRIMENTI GESTISCO ATTRAVERSO LETTURA SPIA

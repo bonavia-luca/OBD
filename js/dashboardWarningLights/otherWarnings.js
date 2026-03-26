@@ -1,4 +1,4 @@
-import Images from "./images.js";
+import Images from "../images.js";
 
 export default class OtherWarnings {
     constructor() {
@@ -17,7 +17,7 @@ export default class OtherWarnings {
         //this.outOfFuel();
         this.clearOtherWarnings();
         //
-        this.battery()
+        /*this.battery()
         this.brakeSystem()
         this.engineOil()
         this.injectors()
@@ -27,7 +27,7 @@ export default class OtherWarnings {
         this.hood()
         this.rearDefrost()
         this.trunk()
-        this.warning()
+        this.warning()*/
     }
 
     fuel() {
@@ -126,5 +126,4 @@ export default class OtherWarnings {
                 ${this.otherWarnings.warning}
             </div>`;
     }
-    //TODO: spie rimanenti
 }

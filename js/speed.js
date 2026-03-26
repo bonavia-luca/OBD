@@ -22,12 +22,6 @@ function updateSpeedometer(currentSpeed) {
     speedVal.textContent = Math.round(currentSpeed);
 }
 
-// PROVA SUL BROWSER: Aggiungi queste righe temporanee per testarlo!
- setInterval(() => {
-     const randomSpeed = Math.floor(Math.random() * 150);
-     updateSpeedometer(randomSpeed);
- }, 2000);
-
 // 1. Peschiamo gli elementi del contagiri dall'HTML
 const rpmRing = document.getElementById('rpm-ring');
 const rpmVal = document.getElementById('rpm-val');
@@ -51,8 +45,9 @@ function updateRPM(currentRPM) {
     rpmVal.textContent = Math.round(currentRPM);
 }
 
-// PROVA SUL BROWSER (Opzionale):
- setInterval(() => {
-     const randomRPM = Math.floor(Math.random() * 6000);
-     updateRPM(randomRPM);
- }, 1000); // Aggiorna ogni secondo per vedere l'effetto!
+// PROVA SUL BROWSER: Aggiungi queste righe temporanee per testarlo!
+setInterval(() => {
+    const randomSpeed = Math.floor(Math.random() * 150);
+    updateSpeedometer(randomSpeed);
+    updateRPM(randomSpeed * 40 + Math.floor(Math.random() * 54) - Math.floor(Math.random() * 54));
+}, 1000);

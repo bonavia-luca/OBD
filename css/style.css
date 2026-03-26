@@ -35,3 +35,7 @@ html, body {
 .neon-azzurro {
     filter: drop-shadow(0 0 2px #0000ff) drop-shadow(0 0 10px #0000ff) brightness(1.2);
 }
+
+#fuel-level, #temperature-level {
+    transition: height 1s ease, background-color 0.5s ease, color 0.5s ease ;
+}

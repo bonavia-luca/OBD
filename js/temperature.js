@@ -1,0 +1,36 @@
+import Images from "./images.js";
+
+export default class Temperature {
+    constructor() {
+        this.temperatureLevel = document.getElementById("temperature-level");
+        this.temperatureWarning = document.getElementById("temperature-warning");
+        this.caricaTemperature();
+    }
+
+    async caricaTemperature() {
+        this.temperatureIcon = await Images.getTemperature();
+
+        this.setTemperature(70)
+        setInterval(() =>  {
+            const temp = Math.floor(Math.random() * 80) + 50;
+            this.setTemperature(temp)
+        }, 5000)
+    }
+
+    async setTemperature(temp){
+        const percentage = Math.floor((temp * 100 ) / 130);
+        console.log(percentage)
+
+        this.temperatureLevel.style.height = `${percentage}%`;
+        this.temperatureLevel.setAttribute("aria-valuenow", percentage)
+        this.temperatureLevel.innerHTML = `${temp}°C`;
+
+        if(percentage < 80) {
+            this.temperatureLevel.className = "progress-bar bg-success w-100 fs-3 fw-bold";
+            this.temperatureWarning.innerHTML = this.temperatureIcon.temperature;
+        }  else {
+            this.temperatureLevel.className = "progress-bar bg-danger w-100 fs-3 fw-bold";
+            this.temperatureWarning.innerHTML = this.temperatureIcon.highTemperature;
+        }
+    }
+}

@@ -22,6 +22,16 @@ class Images {
         await this.ready;
         return this.images.otherWarnings;
     }
+
+    async getFuel() {
+        await this.ready;
+        return this.images.fuelWarnings;
+    }
+
+    async getTemperature() {
+        await this.ready;
+        return this.images.temperatureWarnings;
+    }
 }
 
 export default new Images();

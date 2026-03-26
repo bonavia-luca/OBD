@@ -1,0 +1,33 @@
+# Dipendenze (MAI caricarle su Git)
+node_modules/
+jspm_packages/
+
+# Log di errore
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# File del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Cartelle di build/distribuzione (se usi TypeScript o Webpack)
+dist/
+build/
+out/
+
+# Variabili d'ambiente (contengono password o chiavi API)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cartelle specifiche degli editor (VS Code, IntelliJ)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

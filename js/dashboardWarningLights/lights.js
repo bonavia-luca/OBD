@@ -1,4 +1,4 @@
-import Images from "./images.js";
+import Images from "../images.js";
 
 export default class Lights {
     constructor() {
