@@ -4,18 +4,32 @@ export default class Fuel {
     constructor() {
         this.fuelLevel = document.getElementById("fuel-level");
         this.fuelWarning = document.getElementById("fuel-warning");
-        this.caricaFuel();
+        this.loadFuel();
     }
 
-    async caricaFuel() {
+    async loadFuel() {
         this.fuelIcon = await Images.getFuel();
+
+        await this.animationFuel();
 
         this.setFuel(2)
         setInterval(() =>  {
             const percentage = Math.floor(Math.random() * 100)
-            console.log(percentage)
+            //console.log(percentage)
             this.setFuel(percentage)
         }, 5000)
+    }
+
+    async animationFuel() {
+        for (let i = 0; i <= 100; i++) {
+            this.setFuel(i);
+            await new Promise(resolve => setTimeout(resolve, 16));
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+        for (let i = 100; i >= 0; i--) {
+            this.setFuel(i);
+            await new Promise(resolve => setTimeout(resolve, 16));
+        }
     }
 
     async setFuel(percentage){

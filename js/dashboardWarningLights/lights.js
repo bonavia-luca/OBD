@@ -11,7 +11,7 @@ export default class Lights {
         this.lights = await Images.getLights();
         this.highLight()
         // this.noLight();
-        this.lamp();
+        //this.lamp();
         this.fogLight();
     }
 

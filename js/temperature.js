@@ -4,22 +4,36 @@ export default class Temperature {
     constructor() {
         this.temperatureLevel = document.getElementById("temperature-level");
         this.temperatureWarning = document.getElementById("temperature-warning");
-        this.caricaTemperature();
+        this.loadTemperature();
     }
 
-    async caricaTemperature() {
+    async loadTemperature() {
         this.temperatureIcon = await Images.getTemperature();
 
-        this.setTemperature(70)
+        await this.animationTemperature();
+
+        this.setTemperature(50)
         setInterval(() =>  {
             const temp = Math.floor(Math.random() * 80) + 50;
             this.setTemperature(temp)
         }, 5000)
     }
 
+    async animationTemperature() {
+        for (let i = 50; i <= 130; i++) {
+            this.setTemperature(i);
+            await new Promise(resolve => setTimeout(resolve, 20));
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+        for (let i = 130; i >= 50; i--) {
+            this.setTemperature(i);
+            await new Promise(resolve => setTimeout(resolve, 20));
+        }
+    }
+
     async setTemperature(temp){
         const percentage = Math.floor((temp * 100 ) / 130);
-        console.log(percentage)
+        //console.log(percentage)
 
         this.temperatureLevel.style.height = `${percentage}%`;
         this.temperatureLevel.setAttribute("aria-valuenow", percentage)

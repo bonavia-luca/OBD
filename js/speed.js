@@ -1,53 +1,98 @@
-// 1. Peschiamo gli elementi dall'HTML
+export default class Speed {
+    constructor() {
+        this.speedRing = document.getElementById("speed-ring");
+        this.lblSpeed = document.getElementById('speed-val');
+        this.rpmRing = document.getElementById("rpm-ring");
+        this.lblRpm = document.getElementById('rpm-val');
+
+        this.MAX_SPEED = 220;
+        this.MAX_RPM = 8000;
+        this.MAX_ARC = 353;    //Lunghezza massima arco
+
+        this.inizitalize();
+    }
+
+    updateSpeed(speed) {
+        if (speed < 0) speed = 0;
+        if (speed > this.MAX_SPEED) speed = this.MAX_SPEED;
+
+        this.fillSpeed = (speed / this.MAX_SPEED) * this.MAX_ARC;
+
+        this.speedRing.setAttribute('stroke-dasharray', `${this.fillSpeed} 471`);
+
+        this.lblSpeed.textContent = Math.round(speed);
+    }
+
+    updateRPM(rpm) {
+        if (rpm < 0) rpm = 0;
+        if (rpm > this.MAX_RPM) rpm = this.MAX_RPM;
+
+        this.fillRpm = (rpm / this.MAX_RPM) * this.MAX_ARC;
+
+        this.rpmRing.setAttribute('stroke-dasharray', `${this.fillRpm} 471`);
+
+        this.lblRpm.textContent = Math.round(rpm);
+    }
+
+    async inizitalize() {
+        const dt = new Date();
+        for (let i = 0; i <= 2500; i+=25) {
+            this.updateSpeed(Math.floor(this.MAX_SPEED*i)/2500)
+            this.updateRPM(Math.floor(this.MAX_RPM*i)/2500);
+            await new Promise(resolve => setTimeout(resolve, 12));
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+        for (let i = 2500; i >= 0; i-=25) {
+            this.updateSpeed(Math.floor(this.MAX_SPEED*i)/2500)
+            this.updateRPM(Math.floor(this.MAX_RPM*i)/2500);
+            await new Promise(resolve => setTimeout(resolve, 12));
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+        console.log((new Date())-dt);
+
+        setInterval(() => {     //Utile solo in fase di test
+            const rndSpeed = Math.floor(Math.random() * 150);
+            this.updateSpeed(rndSpeed);
+            this.updateRPM(rndSpeed * 40 + Math.floor(Math.random() * 54) - Math.floor(Math.random() * 54));
+        }, 1000);
+    }
+}
+
+/*
 const speedRing = document.getElementById('speed-ring');
-const speedVal = document.getElementById('speed-val');
+const lblSpeed = document.getElementById('speed-val');
+const rpmRing = document.getElementById('rpm-ring');
+const lblRpm = document.getElementById('rpm-val');
 
-// 2. Impostiamo il fondo scala del tuo tachimetro (es. 220 km/h)
 const MAX_SPEED = 220;
-const MAX_ARC = 353; // È la lunghezza fisica massima dell'arco in SVG, non toccarla
+const MAX_RPM = 8000;
+const MAX_ARC = 353;    //Lunghezza massima arco
 
-// 3. Funzione che chiamerai quando ricevi il dato dall'OBD
-function updateSpeedometer(currentSpeed) {
-    // Sicurezza: blocchiamo la lancetta se la velocità è sotto 0 o sopra il limite
-    if (currentSpeed < 0) currentSpeed = 0;
-    if (currentSpeed > MAX_SPEED) currentSpeed = MAX_SPEED;
+function updateSpeedometer(speed) {
+    if (speed < 0) speed = 0;
+    if (speed > MAX_SPEED) speed = MAX_SPEED;
 
-    // Calcoliamo la proporzione matematica per riempire l'arco
-    const fillAmount = (currentSpeed / MAX_SPEED) * MAX_ARC;
+    const fillAmount = (speed / MAX_SPEED) * MAX_ARC;
 
-    // Magia pura: cambiamo l'attributo SVG e il CSS inline farà l'animazione fluida
     speedRing.setAttribute('stroke-dasharray', `${fillAmount} 471`);
 
-    // Aggiorniamo il numero gigante al centro
-    speedVal.textContent = Math.round(currentSpeed);
+    lblSpeed.textContent = Math.round(speed);
 }
 
-// 1. Peschiamo gli elementi del contagiri dall'HTML
-const rpmRing = document.getElementById('rpm-ring');
-const rpmVal = document.getElementById('rpm-val');
+function updateRPM(rpm) {
+    if (rpm < 0) rpm = 0;
+    if (rpm > MAX_RPM) rpm = MAX_RPM;
 
-// 2. Impostiamo il fondo scala dei giri (es. 8000 RPM, tipico delle auto a benzina)
-const MAX_RPM = 8000;
+    const fillAmount = (rpm / MAX_RPM) * MAX_ARC;
 
-// 3. Funzione per aggiornare i giri motore
-function updateRPM(currentRPM) {
-    // Sicurezza: teniamo il valore dentro i limiti
-    if (currentRPM < 0) currentRPM = 0;
-    if (currentRPM > MAX_RPM) currentRPM = MAX_RPM;
-
-    // MAX_ARC è sempre 353 (definito prima per la velocità, non serve ridichiararlo)
-    const fillAmount = (currentRPM / MAX_RPM) * MAX_ARC;
-
-    // Aggiorniamo l'anello visivo
     rpmRing.setAttribute('stroke-dasharray', `${fillAmount} 471`);
 
-    // Aggiorniamo il numero testuale
-    rpmVal.textContent = Math.round(currentRPM);
+    lblRpm.textContent = Math.round(rpm);
 }
 
-// PROVA SUL BROWSER: Aggiungi queste righe temporanee per testarlo!
-setInterval(() => {
+setInterval(() => {     //Utile solo in fase di test
     const randomSpeed = Math.floor(Math.random() * 150);
     updateSpeedometer(randomSpeed);
     updateRPM(randomSpeed * 40 + Math.floor(Math.random() * 54) - Math.floor(Math.random() * 54));
 }, 1000);
+*/

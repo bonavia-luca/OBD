@@ -1,18 +1,18 @@
 {
   "turnSignals": {
-    "turnSxOff": "<img class=\"w-100\"  src=\"icons/turn/turnSignalSxOff.svg\">",
-    "turnSx": "<img class=\"w-100 neon-verde\"  src=\"icons/turn/turnSignalSx.svg\">",
-    "turnDxOff": "<img class=\"w-100\"  src=\"icons/turn/turnSignalDxOff.svg\">",
-    "turnDx": "<img class=\"w-100 neon-verde\"  src=\"icons/turn/turnSignalDx.svg\">",
-    "hazardOff": "<img class=\"w-100\"  src=\"icons/turn/hazardOff.svg\">",
-    "hazard": "<img class=\"w-100 neon-rosso\"  src=\"icons/turn/hazard.svg\">"
+    "turnSxOff": "<img class=\"w-50\"  src=\"icons/turn/turnSignalSxOff.svg\">",
+    "turnSx": "<img class=\"w-50 neon-verde\"  src=\"icons/turn/turnSignalSx.svg\">",
+    "turnDxOff": "<img class=\"w-50\"  src=\"icons/turn/turnSignalDxOff.svg\">",
+    "turnDx": "<img class=\"w-50 neon-verde\"  src=\"icons/turn/turnSignalDx.svg\">",
+    "hazardOff": "<img class=\"w-50\"  src=\"icons/turn/hazardOff.svg\">",
+    "hazard": "<img class=\"w-50 neon-rosso\"  src=\"icons/turn/hazard.svg\">"
   },
   "lights" : {
-    "fogLight": "<img class=\"w-50 neon-verde\"  src=\"icons/lights/fogLight.svg\">",
-    "highLight": "<img class=\"w-50 neon-azzurro\"  src=\"icons/lights/highLight.svg\">",
-    "lowLight": "<img class=\"w-50 neon-verde\"  src=\"icons/lights/lowLight.svg\">",
-    "noLight": "<img class=\"w-50 neon-rosso\"  src=\"icons/lights/noLight.svg\">",
-    "lamp": "<img class=\"w-50 neon-rosso\"  src=\"icons/lights/lamp.svg\">"
+    "fogLight": "<img class=\"w-75 neon-verde\"  src=\"icons/lights/fogLight.svg\">",
+    "highLight": "<img class=\"w-75 neon-azzurro\"  src=\"icons/lights/highLight.svg\">",
+    "lowLight": "<img class=\"w-75 neon-verde\"  src=\"icons/lights/lowLight.svg\">",
+    "noLight": "<img class=\"w-75 neon-rosso\"  src=\"icons/lights/noLight.svg\">",
+    "lamp": "<img class=\"w-75 neon-rosso\"  src=\"icons/lights/lamp.svg\">"
   },
   "fuelWarnings" : {
     "fuel": "<img class=\"w-100\"  src=\"icons/fuel/fuel.svg\">",

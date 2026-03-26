@@ -4,6 +4,7 @@ import Lights from "./dashboardWarningLights/lights.js";
 import OthersWarnings from "./dashboardWarningLights/otherWarnings.js";
 import Fuel from "./fuel.js";
 import Temperature from "./temperature.js";
+import Speed from "./speed.js";
 
 document.addEventListener("DOMContentLoaded", function() {
     const dataOra = new DataOra();
@@ -13,4 +14,5 @@ document.addEventListener("DOMContentLoaded", function() {
     const otherWarnings = new OthersWarnings();
     const fuel = new Fuel();
     const temperature = new Temperature();
+    const speed = new Speed();
 })
