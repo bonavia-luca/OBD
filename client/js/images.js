@@ -4,7 +4,7 @@ class Images {
     }
 
     async loadImages() {
-        const response = await fetch("../json/images.json");
+        const response = await fetch("../client/json/images.json");
         this.images = await response.json();
     }
 

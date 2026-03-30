@@ -9,7 +9,7 @@ export default class Speed {
         this.MAX_RPM = 8000;
         this.MAX_ARC = 353;    //Lunghezza massima arco
 
-        this.inizitalize();
+        //this.animationSpeed();
     }
 
     updateSpeed(speed) {
@@ -34,8 +34,8 @@ export default class Speed {
         this.lblRpm.textContent = Math.round(rpm);
     }
 
-    async inizitalize() {
-        const dt = new Date();
+    async animationSpeed() {
+        //const dt = new Date();
         for (let i = 0; i <= 2500; i+=25) {
             this.updateSpeed(Math.floor(this.MAX_SPEED*i)/2500)
             this.updateRPM(Math.floor(this.MAX_RPM*i)/2500);
@@ -48,13 +48,13 @@ export default class Speed {
             await new Promise(resolve => setTimeout(resolve, 12));
         }
         await new Promise(resolve => setTimeout(resolve, 500));
-        console.log((new Date())-dt);
+        //console.log((new Date())-dt);
 
-        setInterval(() => {     //Utile solo in fase di test
+        /*setInterval(() => {     //Utile solo in fase di test
             const rndSpeed = Math.floor(Math.random() * 150);
             this.updateSpeed(rndSpeed);
             this.updateRPM(rndSpeed * 40 + Math.floor(Math.random() * 54) - Math.floor(Math.random() * 54));
-        }, 1000);
+        }, 1000);*/
     }
 }
 

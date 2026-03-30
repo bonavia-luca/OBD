@@ -12,7 +12,8 @@ class Obd extends EventEmitter {
     async events() {
         this.port.on('open', () => {
             console.log(`Connessione aperta sulla porta seriale ${this.port.path}`)
-            this.setConnection();
+            //this.setConnection();
+            this.emit('open');
         });
         this.port.on('close', () => {
             console.log(`Connessione chiusa sulla porta seriale ${this.port.path}`)
@@ -22,44 +23,43 @@ class Obd extends EventEmitter {
         });
 
         this.parser.on('data', (res) => {
-            res = res.replace(/>/g, '').replace(/\s+/g, '').trim();
+            res = res.replace(/>/g, '').replace(/\s+/g, '').trim(); //Elimino spazi vuoti e carattere '>'
             //res = res.trim();
             //console.log(res);
-            if (!res || res === '>' || res === 'OK' || res.startsWith('ELM327')) return;  //Escludo linee vuote o linee di comando
-            if (res === 'NO DATA') {
-                console.log("⚠️ L'auto non supporta questo sensore o il motore è spento.");
-                return;
-            }
-            if (res === 'SEARCHING...') {
-                console.log("⏳ Ricerca protocollo in corso...");
-                return;
-            }
-            if(res.startsWith('41')) { //risposta positiva (codice 01 + 40)
-                const pid = res.substring(2, 4);    //contiene PID richiesta (per sapere cosa mi sta dicendo)
-                const data = res.substring(4);      //raccoglie dati in esadecimale
+            if (res) {  //Escludo linee vuote o linee di comando
+                if (res !== 'OK' && !res.startsWith('ELM327')) {
+                    if (res === 'NODATA') {
+                        console.log("L'auto non supporta questo sensore o il motore è spento.");
+                    } else if (res === 'SEARCHING...') {
+                        console.log("Ricerca protocollo in corso...");
+                    } else if (res.startsWith('41')) { //risposta positiva (codice 01 + 40)
+                        const pid = res.substring(2, 4);    //contiene PID richiesta (per sapere cosa mi sta dicendo)
+                        const data = res.substring(4);      //raccoglie dati in esadecimale
 
-                switch (pid) {
-                    case '0C':  //RPM
-                        this.calculateRPM(data);
-                        break;
-                    case '0D':  //Velocità
-                        this.calculateSpeed(data);
-                        break;
-                    case '05':  //Temperatura liquido raffreddamento
-                        this.calculateTemperature(data)
-                        break;
-                    case '2F':  //Livello carburante
-                        this.calculateFuel(data);
-                        break;
-                    default:
-                        console.log(`PID ${pid} non supportato: ${data}`);
-                        break;
+                        switch (pid) {
+                            case '0C':  //RPM
+                                this.calculateRPM(data);
+                                break;
+                            case '0D':  //Velocità
+                                this.calculateSpeed(data);
+                                break;
+                            case '05':  //Temperatura liquido raffreddamento
+                                this.calculateTemperature(data)
+                                break;
+                            case '2F':  //Livello carburante
+                                this.calculateFuel(data);
+                                break;
+                            default:
+                                console.log(`PID ${pid} non supportato: ${data}`);
+                                break;
+                        }
+                    } else {
+                        console.log(`Messaggio sconosciuto: ${res}`)
+                    }
                 }
-            } else {
-                console.log(`Messaggio sconosciuto: ${res}`)
+                this.emit('next');
             }
-            this.emit('next');
-        })
+        });
     }
 
     calculateRPM(hex) {
@@ -97,11 +97,11 @@ class Obd extends EventEmitter {
         this.port.write(cmd + '\r');
     }
 
-    async wait(ms) {
+    /*async wait(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    }*/
 
-    async setConnection() {
+    /*async setConnection() {
         //reset
         this.send('ATZ');
         await this.wait(1000);
@@ -123,7 +123,7 @@ class Obd extends EventEmitter {
         await this.wait(200);
         //GESTIONE READY
         this.emit('ready');
-    }
+    }*/
 
     async createConnection() {
         this.port = new SerialPort({
@@ -138,9 +138,9 @@ class Obd extends EventEmitter {
         })
     }
 
-    async isConnected() {
+    /*async isConnected() {
         return this.port.isOpen;
-    }
+    }*/
 }
 
 module.exports = Obd;

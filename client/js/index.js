@@ -8,7 +8,7 @@ import Speed from "./speed.js";
 
 //import ObdCommunication from "../../server/obdCommunication.js";
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
     const dataOra = new DataOra();
     //dataOra.impostaDataOra();
     const turnSignal = new TurnSignal();
@@ -17,6 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const fuel = new Fuel();
     const temperature = new Temperature();
     const speed = new Speed();
+
+    await Promise.all([fuel.loadFuel(), temperature.loadTemperature()])
+    await Promise.all([fuel.animationFuel(), temperature.animationTemperature(), speed.animationSpeed()])
+
+    /*fuel.setFuel(12)
+    speed.updateSpeed(15)
+    speed.updateRPM(1500)
+    temperature.setTemperature(95)*/
 
     //const obdCommunication = new ObdCommunication();
 })

@@ -4,19 +4,18 @@ export default class Temperature {
     constructor() {
         this.temperatureLevel = document.getElementById("temperature-level");
         this.temperatureWarning = document.getElementById("temperature-warning");
-        this.loadTemperature();
+        //this.loadTemperature();
     }
 
     async loadTemperature() {
         this.temperatureIcon = await Images.getTemperature();
-
-        await this.animationTemperature();
+        /*await this.animationTemperature();
 
         this.setTemperature(50)
         setInterval(() =>  {
             const temp = Math.floor(Math.random() * 80) + 50;
             this.setTemperature(temp)
-        }, 5000)
+        }, 5000)*/
     }
 
     async animationTemperature() {
@@ -29,6 +28,12 @@ export default class Temperature {
             this.setTemperature(i);
             await new Promise(resolve => setTimeout(resolve, 20));
         }
+
+        /*this.setTemperature(50);
+        setInterval(() =>  {
+            const temp = Math.floor(Math.random() * 80) + 50;
+            this.setTemperature(temp)
+        }, 5000);*/
     }
 
     async setTemperature(temp){

@@ -3,11 +3,31 @@ const Obd = require("./obd.js");
 class ObdCommunication {
     constructor() {
         this.obd = new Obd();
-        this.loop = [() => this.getRpm, () => this.getSpeed, () => this.getTemperature, () => this.getFuel];
-        this.indice = 0;
+        this.loopConf = [   () => this.setReset(),
+                            () => this.setEchoOff(),
+                            () => this.setLinefeedOff(),
+                            () => this.setEmptySpaceOff(),
+                            () => this.setAutofindProtocol()
+                        ];
+        this.indexConf = 0;
+        this.loop = [
+                        () => this.getRpm(),
+                        () => this.getSpeed(),
+                        () => this.getTemperature(),
+                        () => this.getFuel()
+                    ];
+        this.index = 0;
 
-        this.obd.on('ready', () => {
-            this.sendNext();
+        this.obd.on('open', () => {
+            this.sendNextConf();
+        })
+
+        this.obd.on('next', () => {
+            if(this.indexConf < this.loopConf.length) {
+                this.sendNextConf();
+            } else {
+                this.sendNext();
+            }
         })
 
         /*setInterval(async () => {
@@ -20,9 +40,14 @@ class ObdCommunication {
         }, 1500);*/
     }
 
+    async sendNextConf() {
+        this.loopConf[this.indexConf]();
+        this.indexConf++;
+    }
+
     async sendNext() {
-        this.loop[this.indice]();
-        this.indice = (this.indice + 1) % this.loop.length;
+        this.loop[this.index]();
+        this.index = (this.index + 1) % this.loop.length;
     }
 
     async getRpm() {
@@ -48,6 +73,7 @@ class ObdCommunication {
     async setEchoOff(){
         this.obd.send('ATE0');
     }
+
     async setLinefeedOff(){ // toglie \n
         this.obd.send('ATL0');
     }
@@ -57,7 +83,7 @@ class ObdCommunication {
     }
 
     async setAutofindProtocol(){
-        this.obd.send('ATP0');
+        this.obd.send('ATSP0');
     }
 }
 module.exports = ObdCommunication;
