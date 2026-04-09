@@ -26,6 +26,11 @@ export default class Speed {
     updateRPM(rpm) {
         if (rpm < 0) rpm = 0;
         if (rpm > this.MAX_RPM) rpm = this.MAX_RPM;
+        if (rpm > (this.MAX_RPM*0.75)) {
+            this.lblRpm.setAttribute("fill", "#ff0000");
+        } else {
+            this.lblRpm.setAttribute("fill", "#ffffff");
+        }
 
         this.fillRpm = (rpm / this.MAX_RPM) * this.MAX_ARC;
 
