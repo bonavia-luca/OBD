@@ -39,3 +39,12 @@ html, body {
 #fuel-level, #temperature-level {
     transition: height 0.1s ease;
 }
+
+.sensor-segment {
+    stroke-width: 16;
+}
+
+.status-off { stroke: #2a2a2a; }
+.status-safe { stroke: #00ff00; }
+.status-warn { stroke: #ffe500; }
+.status-danger { stroke: #ff0000; }
