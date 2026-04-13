@@ -1,4 +1,4 @@
-class ParkingSensors {
+export default class ParkingSensors {
     constructor() {
         this.segments = [
             [
@@ -33,10 +33,10 @@ class ParkingSensors {
     }
 
     async setDistance(distances) {
-        console.log(distances)
+        //console.log(distances)
         this.resetDistance();
         for (let i = 0; i < this.segments.length; i++) {
-            console.log(this.distances[i]);
+            //console.log(distances[i]);
             if(distances[i] < 1.7) {
                 this.segments[i][2].setAttribute("class","sensor-segment status-safe");
             }
@@ -49,5 +49,3 @@ class ParkingSensors {
         }
     }
 }
-
-export default ParkingSensors;

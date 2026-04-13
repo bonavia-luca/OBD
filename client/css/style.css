@@ -48,3 +48,11 @@ html, body {
 .status-safe { stroke: #00ff00; }
 .status-warn { stroke: #ffe500; }
 .status-danger { stroke: #ff0000; }
+
+#rear-camera {
+    transform: scaleX(-1);
+}
+
+.text-lbl {
+    font-family: system-ui, sans-serif;
+}

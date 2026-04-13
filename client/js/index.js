@@ -6,6 +6,7 @@ import Fuel from "./fuel.js";
 import Temperature from "./temperature.js";
 import Speed from "./speed.js";
 import ParkingSensors from "./parkingSensors.js";
+import RearCamera from "./rearCamera.js";
 
 //import ObdCommunication from "../../server/obdCommunication.js";
 
@@ -19,12 +20,15 @@ document.addEventListener("DOMContentLoaded", async function() {
     const temperature = new Temperature();
     const speed = new Speed();
     const parkingSensors = new ParkingSensors();
-
-    /*parkingSensors.setDistance([1.2, 3, 0.4, 0.9])
-    await setTimeout(()=> {parkingSensors.setDistance([0.2, 1, 1.4, 3])}, 1000);*/
+    const rearCamera = new RearCamera();
 
     await Promise.all([fuel.loadFuel(), temperature.loadTemperature()])
     await Promise.all([fuel.animationFuel(), temperature.animationTemperature(), speed.animationSpeed()])
+
+    /*parkingSensors.setDistance([1.2, 3, 0.4, 0.9])
+    await setTimeout(()=> {parkingSensors.setDistance([0.2, 1, 1.4, 3])}, 1000);
+    rearCamera.startCamera();
+    await setTimeout(()=> {rearCamera.stopCamera()}, 8000);*/
 
 
     /*fuel.setFuel(12)
