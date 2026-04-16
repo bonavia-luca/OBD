@@ -1,12 +1,22 @@
 const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
 const { EventEmitter } = require('events');
+const { WebSocket } = require('ws');
 
 class Obd extends EventEmitter {
     constructor() {
         super();
         this.createConnection();
         this.events();
+        this.wss = new WebSocket.Server({ port: 5254});
+        this.wss.on('connection', (ws) => {
+            this.ws = ws;
+
+            ws.on('close', () => {
+                this.ws = null;
+            })
+
+        })
     }
 
     async events() {
@@ -38,16 +48,24 @@ class Obd extends EventEmitter {
 
                         switch (pid) {
                             case '0C':  //RPM
-                                this.calculateRPM(data);
+                                this.sendData("rpm", this.calculateRPM(data));
+                                //this.ws.send(JSON.stringify({ type: "rpm", val: this.calculateRPM(data) }));
+                                //this.calculateRPM(data);
                                 break;
                             case '0D':  //Velocità
-                                this.calculateSpeed(data);
+                                this.sendData("speed", this.calculateSpeed(data));
+                                //this.ws.send(JSON.stringify({ type: "speed", val: this.calculateSpeed(data) }));
+                                //this.calculateSpeed(data);
                                 break;
                             case '05':  //Temperatura liquido raffreddamento
-                                this.calculateTemperature(data)
+                                this.sendData("temperature", this.calculateTemperature(data));
+                                //this.ws.send(JSON.stringify({ type: "temperature", val: this.calculateTemperature(data) }));
+                                //this.calculateTemperature(data)
                                 break;
                             case '2F':  //Livello carburante
-                                this.calculateFuel(data);
+                                this.sendData("fuel", this.calculateFuel(data));
+                                //this.ws.send(JSON.stringify({ type: "fuel", val: this.calculateFuel(data) }));
+                                //this.calculateFuel(data);
                                 break;
                             default:
                                 console.log(`PID ${pid} non supportato: ${data}`);
@@ -62,12 +80,20 @@ class Obd extends EventEmitter {
         });
     }
 
+    sendData(type, val) {
+        if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+            this.ws.send(JSON.stringify({ type, val }));
+        }
+    }
+
     calculateRPM(hex) {
         const A = parseInt(hex.substring(0, 2), 16);
         const B = parseInt(hex.substring(2, 4), 16);
-        const rpm = ((A * 256) + B) / 4;
+        let rpm = Math.floor(((A * 256) + B) / 4);
+        rpm = rpm - (rpm % 5);
 
-        console.log(`Giri Motore: ${rpm} RPM`);
+        //console.log(`Giri Motore: ${rpm} RPM`);
+        return rpm;
     }
 
     calculateSpeed(hex) {
@@ -75,21 +101,24 @@ class Obd extends EventEmitter {
         const speedAdj = Math.ceil(A / 10);
         const speed = A + speedAdj;
 
-        console.log(`Velocità: ${speed} km/h`);
+        //console.log(`Velocità: ${speed} km/h`);
+        return speed;
     }
 
     calculateTemperature(hex) {
         const A = parseInt(hex.substring(0, 2), 16);
         const temp = A - 40;
 
-        console.log(`Temperatura Motore: ${temp} °C`);
+        //console.log(`Temperatura Motore: ${temp} °C`);
+        return temp;
     }
 
     calculateFuel(hex) {
         const A = parseInt(hex.substring(0, 2), 16);
         const percentage = Math.round((A * 100) / 255);
 
-        console.log(`Livello Carburante: ${percentage}%`);
+        //console.log(`Livello Carburante: ${percentage}%`);
+        return percentage;
     }
 
     async send(cmd) {
