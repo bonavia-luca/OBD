@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", async function() {
     await Promise.all([fuel.loadFuel(), temperature.loadTemperature()])
     await Promise.all([fuel.animationFuel(), temperature.animationTemperature(), speed.animationSpeed()])
 
-    /*parkingSensors.setDistance([1.2, 3, 0.4, 0.9])
+    parkingSensors.setDistance([1.2, 3, 0.4, 0.9])
     await setTimeout(()=> {parkingSensors.setDistance([0.2, 1, 1.4, 3])}, 1000);
     await setTimeout(()=> {parkingSensors.setDistance([2, 0.1, 1, 0.3])}, 1000);
     rearCamera.startCamera();
-    await setTimeout(()=> {rearCamera.stopCamera()}, 8000);*/
+    await setTimeout(()=> {rearCamera.stopCamera()}, 8000);
 
 
     /*fuel.setFuel(12)

@@ -1,8 +1,8 @@
 //const WebSocket = require('ws');
 
-const Speed = require('speed');
-const Temperature = require('temperature');
-const Fuel = require('fuel');
+import Fuel from "./fuel.js";
+import Temperature from "./temperature.js";
+import Speed from "./speed.js";
 
 export default class WebSocketClient {
     constructor() {
@@ -12,7 +12,7 @@ export default class WebSocketClient {
 
         this.ws = new WebSocket('ws://localhost:5254');
 
-        this.ws.on('message', (data) => {
+        this.ws.onmessage = (data) => {
             this.data = JSON.parse(data.toString());
             switch (this.data.type) {
                 case 'rpm':
@@ -28,6 +28,6 @@ export default class WebSocketClient {
                     this.fuel.setFuel(this.data.val);
                     break;
             }
-        })
+        }
     }
 }
