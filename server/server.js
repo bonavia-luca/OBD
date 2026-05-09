@@ -1,4 +1,5 @@
-const ObdCommunication = require("./js/obdCommunication.js");
+const ObdCommunication = require("./js/obd/obdCommunication.js");
+const Arduino = require("./js/arduino/arduino.js");
 
-const obdCommunication
-    = new ObdCommunication();
+const obdCommunication= new ObdCommunication();
+const arduino = new Arduino();

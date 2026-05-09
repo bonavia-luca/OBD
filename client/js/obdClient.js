@@ -1,10 +1,11 @@
 //const WebSocket = require('ws');
 
-import Fuel from "./fuel.js";
+/*import Fuel from "./fuel.js";
 import Temperature from "./temperature.js";
-import Speed from "./speed.js";
+import Speed from "./speed.js";*/
 
-export default class WebSocketClient {
+
+export default class ObdClient {
     constructor(speed, fuel, temperature) {
         this.speed = speed;
         this.fuel = fuel;

@@ -3,6 +3,10 @@ import Images from "../images.js";
 export default class TurnSignal {
     constructor() {
         this.turn = null;
+        this.turnSx = document.getElementById('turnSx');
+        this.turnDx = document.getElementById('turnDx');
+        this.hazard = document.getElementById('hazard');
+
         this.caricaTurnSignals();
     }
 
@@ -13,7 +17,7 @@ export default class TurnSignal {
 
     //SE CORRENTE CONTINUA, ALTRIMENTI GESTISCO ATTRAVERSO LETTURA SPIA
 
-    lampeggiaDx() {
+    /*lampeggiaDx() {
         const turnDx = document.getElementById("turnDx");
         let isOn = false;
         setInterval(() => {
@@ -40,5 +44,15 @@ export default class TurnSignal {
             isOn = !isOn;
             hazard.innerHTML = isOn ? this.turn.hazard : this.turn.hazardOff;
         }, 500);
+    }*/
+
+    /*showHide(id, status) {
+        if(status == 1) {
+            console.log(this[id]);
+        }
+    }*/
+    showHide(id, status) {
+        //console.log(id)
+        this[id].innerHTML = status ? this.turn[id] : this.turn[id + "Off"];
     }
 }

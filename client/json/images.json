@@ -8,11 +8,11 @@
     "hazard": "<img class=\"w-50 neon-rosso\"  src=\"icons/turn/hazard.svg\">"
   },
   "lights" : {
-    "fogLight": "<img class=\"w-75 neon-verde\"  src=\"icons/lights/fogLight.svg\">",
-    "highLight": "<img class=\"w-75 neon-azzurro\"  src=\"icons/lights/highLight.svg\">",
-    "lowLight": "<img class=\"w-75 neon-verde\"  src=\"icons/lights/lowLight.svg\">",
-    "noLight": "<img class=\"w-75 neon-rosso\"  src=\"icons/lights/noLight.svg\">",
-    "lamp": "<img class=\"w-75 neon-rosso\"  src=\"icons/lights/lamp.svg\">"
+    "fogLight": "<img id=\"fogLight\" class=\"w-75 neon-verde\"  src=\"icons/lights/fogLight.svg\">",
+    "highLight": "<img id=\"highLight\" class=\"w-75 neon-azzurro\"  src=\"icons/lights/highLight.svg\">",
+    "lowLight": "<img id=\"lowLight\" class=\"w-75 neon-verde\"  src=\"icons/lights/lowLight.svg\">",
+    "noLight": "<img id=\"noLight\" class=\"w-75 neon-rosso\"  src=\"icons/lights/noLight.svg\">",
+    "lamp": "<img id=\"lamp\" class=\"w-75 neon-rosso\"  src=\"icons/lights/lamp.svg\">"
   },
   "fuelWarnings" : {
     "fuel": "<img class=\"w-100\"  src=\"icons/fuel/fuel.svg\">",
@@ -28,11 +28,9 @@
     "candelette": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/candelette.svg\">",
     "doors": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/doors.svg\">",
     "engineOil": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/engineOil.svg\">",
-    "fuel": "<img class=\"w-100\"  src=\"icons/otherWarnings/fuel.svg\">",
     "hood": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/hood.svg\">",
     "injectors": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/injectors.svg\">",
     "motor": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/motor.png\">",
-    "outOfFuel": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/outOfFuel.svg\">",
     "rearDefrost": "<img class=\"w-100 neon-azzurro\"  src=\"icons/otherWarnings/rearDefrost.svg\">",
     "trunk": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/trunk.svg\">",
     "warning": "<img class=\"w-100 neon-rosso\"  src=\"icons/otherWarnings/warning.svg\">"

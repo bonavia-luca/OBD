@@ -15,7 +15,8 @@ export default class OtherWarnings {
 
         //this.highTemperature();
         //this.outOfFuel();
-        this.clearOtherWarnings();
+        this.popolaOtherWarnings();
+        //this.clearOtherWarnings();
         //
         /*this.battery()
         this.brakeSystem()
@@ -28,6 +29,18 @@ export default class OtherWarnings {
         this.rearDefrost()
         this.trunk()
         this.warning()*/
+    }
+
+    popolaOtherWarnings(){
+        //console.log(this.otherWarnings)
+        Array.from(Object.keys(this.otherWarnings)).forEach((key) => {
+            //console.log(this.otherWarnings[key]);
+            this.divOtherWarnings.innerHTML += `
+            <div id="${key}" class="col-1 d-flex align-items-center d-none">
+                ${this.otherWarnings[key]}
+            </div>`;
+            //console.log(this.divOtherWarnings.innerHTML)
+        })
     }
 
     fuel() {
@@ -50,39 +63,44 @@ export default class OtherWarnings {
         this.divOtherWarnings.innerHTML = '';
     }
 
-    battery() {
-        this.divOtherWarnings.innerHTML += `
-            <div class="col-1 d-flex align-items-center">
-                ${this.otherWarnings.battery}
-            </div>`;
+    /*battery(status) {
+        const div = document.getElementById('battery');
+        if (status) {
+            div.classList.remove('d-none');
+        } else {
+            div.classList.add('d-none')
+        }
     }
 
-    brakeSystem() {
-        this.divOtherWarnings.innerHTML += `
-            <div class="col-1 d-flex align-items-center">
-                ${this.otherWarnings.brakeSystem}
-            </div>`;
+    brakeSystem(status) {
+        const div = document.getElementById('brakeSystem');
+        if (status) {
+            div.classList.remove('d-none');
+        } else {
+            div.classList.add('d-none')
+        }
     }
 
-    engineOil() {
-        this.divOtherWarnings.innerHTML += `
-            <div class="col-1 d-flex align-items-center">
-                ${this.otherWarnings.engineOil}
-            </div>`;
+    engineOil(status) {
+        this.showHide('engineOil', status);
     }
 
-    injectors() {
-        this.divOtherWarnings.innerHTML += `
-            <div class="col-1 d-flex align-items-center">
-                ${this.otherWarnings.injectors}
-            </div>`;
+    injectors(status) {
+        const div = document.getElementById('injectors');
+        if (status) {
+            div.classList.remove('d-none');
+        } else {
+            div.classList.add('d-none')
+        }
     }
 
-    motor() {
-        this.divOtherWarnings.innerHTML += `
-            <div class="col-1 d-flex align-items-center">
-                ${this.otherWarnings.motor}
-            </div>`;
+    motor(status) {
+        const div = document.getElementById('motor');
+        if (status) {
+            div.classList.remove('d-none');
+        } else {
+            div.classList.add('d-none')
+        }
     }
 
     candelette() {
@@ -125,5 +143,14 @@ export default class OtherWarnings {
             <div class="col-1 d-flex align-items-center">
                 ${this.otherWarnings.warning}
             </div>`;
+    }*/
+
+    showHide(id, status) {
+        const div = document.getElementById(id);
+        if (status) {
+            div.classList.remove('d-none');
+        } else {
+            div.classList.add('d-none')
+        }
     }
 }

@@ -37,13 +37,13 @@ export default class ParkingSensors {
         this.resetDistance();
         for (let i = 0; i < this.segments.length; i++) {
             //console.log(distances[i]);
-            if(distances[i] < 1.7) {
+            if(distances[i] < 170) {
                 this.segments[i][2].setAttribute("class","sensor-segment status-safe");
             }
-            if(distances[i] < 1) {
+            if(distances[i] < 100) {
                 this.segments[i][1].setAttribute("class","sensor-segment status-warn");
             }
-            if(distances[i] < 0.5) {
+            if(distances[i] < 50) {
                 this.segments[i][0].setAttribute("class","sensor-segment status-danger");
             }
         }

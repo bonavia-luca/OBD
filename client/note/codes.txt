@@ -1,0 +1,35 @@
+02  -->  sensore temperatura
+03  -->  trig sensore distanza 1
+04  -->  echo sensore distanza 1
+05  -->  trig sensore distanza 2
+06  -->  echo sensore distanza 2
+07  -->  trig sensore distanza 3
+08  -->  echo sensore distanza 3
+09  -->  trig sensore distanza 4
+10  -->  echo sensore distanza 4
+
+22  -->  REV retromarcia
+
+23  -->  PIN turn sx
+24  -->  PIN turn dx
+25  -->  PIN hazard
+
+//PER IL NO LIGHT DEVO CONTROLLARE CHE NON CI SIA STATO ALCUN LIGHT
+26  -->  PIN fogLight
+27  -->  PIN highLight
+28  -->  PIN lowLight
+29  -->  PIN lamp
+
+30  -->  PIN battery
+31  -->  PIN brakeSystem
+32  -->  PIN candelette
+33  -->  PIN doors
+34  -->  PIN engineOil
+35  -->  PIN fuel
+36  -->  PIN hood
+37  -->  PIN injectors
+38  -->  PIN motor
+39  -->  PIN outOfFuel
+40  -->  PIN rearDefrost
+41  -->  PIN trunk
+42  -->  PIN warning
