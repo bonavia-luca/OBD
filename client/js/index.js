@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     await Promise.all([fuel.loadFuel(), temperature.loadTemperature()])
     await Promise.all([fuel.animationFuel(), temperature.animationTemperature(), speed.animationSpeed()])
 
-    //const obdClient = new ObdClient(speed, fuel, temperature);
+    const obdClient = new ObdClient(speed, fuel, temperature);
     const arduinoClient = new ArduinoClient();
 
     /*parkingSensors.setDistance([1.2, 3, 0.4, 0.9])

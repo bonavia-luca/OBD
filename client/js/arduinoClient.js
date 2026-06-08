@@ -25,13 +25,15 @@
                 (status) => this.otherWarnings.showHide('brakeSystem', status),
                 (status) => this.otherWarnings.showHide('candelette', status),
                 (status) => this.otherWarnings.showHide('doors', status),
+                () => {},
                 (status) => this.otherWarnings.showHide('engineOil', status),
                 (status) => this.otherWarnings.showHide('hood', status),
                 (status) => this.otherWarnings.showHide('injectors', status),
                 (status) => this.otherWarnings.showHide('motor',status),
+                () => {},
                 (status) => this.otherWarnings.showHide('rearDefrost', status),
-                (status) => this.otherWarnings.showHide('trunk',status),
-                (status) => this.otherWarnings.showHide('warning',status)
+                (status) => this.otherWarnings.showHide('trunk', status),
+                (status) => this.otherWarnings.showHide('warning', status)
             ];
 
             this.rear = false;      //memorizza sato (true: retromarcia, false: marcia normale)

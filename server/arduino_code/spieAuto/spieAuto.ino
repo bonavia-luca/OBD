@@ -17,7 +17,7 @@ int distanze[NUM_DIST];
 // =====================
 // PIN DIGITALI
 const int PIN_START = 22;
-const int PIN_END = 40;
+const int PIN_END = 42;
 
 // =====================
 
@@ -113,7 +113,7 @@ void leggiDistanze(int attivo) {
 }
 
 // =====================
-// PIN DIGITALI 22–53
+// PIN DIGITALI 22–42
 // =====================
 void leggiPinDigitali() {
 
